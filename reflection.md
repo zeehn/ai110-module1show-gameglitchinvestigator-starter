@@ -31,23 +31,33 @@ Suggested me that it can generate .gitignore file, although the file already exi
 ## 3. Debugging and testing your fixes
 
 - How did you decide whether a bug was really fixed?
+  I tested by running the app, also did a dry run to see how code has changed. 
 - Describe at least one test you ran (manual or using pytest)  
   and what it showed you about your code.
+  I ran the test where it checks for ranges assigned to difficuly levels of the game.
 - Did AI help you design or understand any tests? How?
-
+  AI just suggested to implement the tests, I collaborated with it in implementing the tests for specific functions.
 ---
 
 ## 4. What did you learn about Streamlit and state?
 
 - In your own words, explain why the secret number kept changing in the original app.
+  Streamlit reruns the entire script on every widget interaction, that's why on each rerun it produced a new number.
 - How would you explain Streamlit "reruns" and session state to a friend who has never used Streamlit?
+  Streamlit has short-term memory loss problem. It forgets the data on each rerun. That's why we have to keep it a place where it should check if it has data before producing new one. That place is state.
 - What change did you make that finally gave the game a stable secret number?
-
+  By storing secret in st.session_state and initializing only if the secret is not present. Removed any code logic that regenerated the secret. 
 ---
 
 ## 5. Looking ahead: your developer habits
 
 - What is one habit or strategy from this project that you want to reuse in future labs or projects?
   - This could be a testing habit, a prompting strategy, or a way you used Git.
+    That making changes in small chunks make it easier to think about code and also learn from the changes. Just asking AI to fix it gets you lost and I don't enjoy working when I don't understand what is happening.
 - What is one thing you would do differently next time you work with AI on a coding task?
+  That I first understand the code by painting a bigger picture using ASK mode. And then moving step by step, fixing bugs and commiting them. 
 - In one or two sentences, describe how this project changed the way you think about AI generated code.
+  It got me familiar with working with AI. Helped me remove many assumptions I had about AI.
+
+---
+

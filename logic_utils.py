@@ -1,3 +1,5 @@
+# FIX: Refactored from app.py into logic_utils.py with Copilot Agent —
+# returns correct ranges per difficulty (Easy=1-20, Normal=1-50, Hard=1-100).
 def get_range_for_difficulty(difficulty: str):
     """Return (low, high) inclusive range for a given difficulty.
 
@@ -15,6 +17,7 @@ def get_range_for_difficulty(difficulty: str):
     return 1, 100
 
 
+# FIX: Moved parsing helper here to centralize input validation (from app.py).
 def parse_guess(raw: str):
     """
     Parse user input into an int guess.
@@ -38,6 +41,8 @@ def parse_guess(raw: str):
     return True, value, None
 
 
+# FIX: Normalized comparisons to integers to avoid mixed-type bugs
+# (was previously comparing strings and ints intermittently in app.py).
 def check_guess(guess, secret):
     """
     Compare guess to secret using integer comparison and return the outcome string.
@@ -64,6 +69,7 @@ def check_guess(guess, secret):
     return "Too Low"
 
 
+# FIX: Centralized hint messages so UI can call get_hint_message(outcome).
 def get_hint_message(outcome: str):
     """Return the user-facing hint message for a given outcome."""
     if outcome == "Win":
@@ -75,6 +81,7 @@ def get_hint_message(outcome: str):
     return ""
 
 
+# FIX: Moved scoring logic from app.py; kept original rules but centralized here.
 def update_score(current_score: int, outcome: str, attempt_number: int):
     """Update score based on outcome and attempt number."""
     if outcome == "Win":
